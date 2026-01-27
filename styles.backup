@@ -1,0 +1,134 @@
+*{
+    margin: auto 0;
+    padding: 0;
+    color: aliceblue;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+}
+
+header li::marker {
+    font-size: 0;
+}
+header {
+    background-color: black;
+    position: fixed;
+    top:0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vh;
+    border-bottom:#575757 2px solid;
+}
+nav ul {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    display: flex;
+    justify-content: right;
+    gap:20px;
+}
+nav a {
+    font-size: 4vh;
+    text-decoration: none;
+    display: block;
+}
+nav a:hover {
+    background-color: #575757;
+}
+#icons img {
+    width: 6vh;
+    height: 6vh;
+    margin-right: 1vh;
+}
+
+
+main {
+    width: 80%;
+    margin: auto;
+    background-color: black;
+}
+main hr {
+    border: #575757 2px solid;
+    margin: 2vh 0;
+}
+#home {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroller-container {
+    height: 65vh;
+    max-width: 800px;
+    margin: auto;
+}
+.scroller {
+    overflow-x: scroll;
+    display: flex;
+    scroll-snap-type: x mandatory;
+
+}
+.item {
+    min-width: 100%;
+    min-height: 65vh;
+    scroll-snap-align: center;
+    margin-bottom: 100px;
+    background-color: black; /* Change the value to white */
+    margin-bottom: 10px;
+    padding: 0 50px;
+    background-color: rgb(18, 13, 8);
+    padding: 80px 40px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.item img {
+   width: 40vw;
+   height: 50vh;
+   border: solid 4px #000000;
+   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 8vh;
+}
+#about-me {
+    text-align: center;
+    font-size: 3.5vh;
+}
+#about-me p {
+    text-align:left;
+    text-indent: 25px;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+#about-me ul {
+    text-align: left;
+    padding-left: 40px;
+    list-style-position: inside;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+}
+
+footer {
+    border-top: #575757 2px solid;
+    width: 100%;
+    background-color: rgb(21, 21, 21);
+    display: flex;
+    justify-content: left;
+    margin: auto;
+}
+footer hr {
+    border: #eeeeee 2px solid;
+}
+.footer-column {
+    margin: 2vh 4vh;
+}
+footer h2 {
+    margin-bottom: 2vh;
+}
