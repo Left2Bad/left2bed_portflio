@@ -24,7 +24,7 @@ header {
     padding: 1vh;
     border-bottom:#575757 2px solid;
 }
-nav ul {
+nav .main-nav-ul {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
