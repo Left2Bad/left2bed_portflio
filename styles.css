@@ -665,3 +665,14 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
 }
+
+#minigames {
+    margin-top: 5vh;
+    background-color: black;
+    border-radius: 8px;
+    font-size: 3vh;
+    text-align: center;
+}
+.minigame {
+    margin-top: 2vh;
+}
