@@ -22,7 +22,14 @@
                 <li><a href="../#achievements">Достижения</a></li>
                 <li><a href="../#projects">Проекты</a></li>
                 <li><a href="../#contacts">Контакты</a></li>
-                <li><a href="#minigames">Мини-игры</a></li>
+                <li class="dropdown">
+                    <a href="#minigames">Мини-игры</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#clicker">Кликер</a></li>
+                        <li><a href="#adventure-generator">Генератор приключений</a></li>
+                        <li><a href="#guessNumber">Угадай число</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <div id="icons">
@@ -34,11 +41,32 @@
         </div>
     </header>
     <main id="minigames">
-        <div class="minigame">
+        <div class="minigame" id="clicker">
             <h2>Кликер</h2>
             <p>Простой кликер, где вы зарабатываете очки кликами и можете покупать улучшения для увеличения заработка.</p>
             <button id="clicker-button">Кликни меня!</button>
-            <p>Очки: <span id="clicker-score">0</span></p>
+            <button id="clicker-null">Обнулить</button>
+            <p id="clicker-score">Очки: 0</p>
+        </div>
+
+        <div class="minigame" id="adventure-generator">
+            <h2>Генератор приключений</h2>
+            <p>Создайте уникальные приключения с помощью нашего генератора. Вы можете выбирать различные параметры и получать случайные события для вашей истории.</p>
+            <button id="adventure-generator-button">Сгенерировать приключение</button>
+            <p id="adventure-generator-result">Ваше приключение появится здесь.</p>
+            <div id="adventure-history">
+                <h3>История приключений</h3>
+                <ul id="adventure-history-list">
+                </ul>
+            </div>
+            </div>
+        <div class="minigame" id="guessNumber">
+            <h2>Угадай число</h2>
+            <p>В этой игре вы должны угадать число от 0 до 100. <span id="triesCount">У вас есть 7 попыток</span></p>
+            <input id="guestNumberInput" type="number" placeholder="Введите число:" min="0" max="100"></input>
+            <button id="guestNumberButton">Угадать</button>
+            <button id="restartGuestNumber">Начать заново</button>
+            <p id="guestNumberResult">Здесь будет результат</p>
         </div>
     </main>
 

@@ -5,8 +5,21 @@
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+html {
+    overflow-x: hidden;
+}
+
 body {
     background-color: black;
+    overflow-x: hidden;
+    min-width: 320px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 header li::marker {
@@ -23,6 +36,12 @@ header {
     justify-content: space-between;
     padding: 1vh;
     border-bottom:#575757 2px solid;
+    flex-wrap: wrap;
+}
+
+header img {
+    max-width: 60px;
+    height: auto;
 }
 nav .main-nav-ul {
     width: 100%;
@@ -31,12 +50,14 @@ nav .main-nav-ul {
     display: flex;
     justify-content: right;
     gap:20px;
+    flex-wrap: wrap;
 }
 nav a {
-    font-size: 4vh;
+    font-size: clamp(1.5rem, 3.5vh, 4vh);
     text-decoration: none;
     display: block;
     transition: all 0.3s ease;
+    padding: 0.5vh 1vh;
 }
 nav a:hover {
     background-color: #575757;
@@ -48,10 +69,58 @@ nav a.active {
     border-bottom: 3px solid #FFD700;
     padding-bottom: 5px;
 }
+
+nav li.dropdown {
+    position: relative;
+}
+
+nav .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1a1a1a;
+    border: 2px solid #575757;
+    border-top: none;
+    list-style: none;
+    min-width: 220px;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+nav .dropdown-menu li {
+    width: 100%;
+}
+
+nav .dropdown-menu a {
+    font-size: clamp(1rem, 2.5vh, 3vh);
+    padding: 1vh;
+    border-bottom: 1px solid #575757;
+}
+
+nav .dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+nav .dropdown-menu a:hover {
+    background-color: #FFD700;
+    color: black;
+    transform: none;
+}
+
+nav li.dropdown.active .dropdown-menu {
+    display: flex;
+}
+#icons {
+    display: flex;
+    gap: 1vh;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
 #icons img {
     width: 6vh;
     height: 6vh;
-    margin-right: 1vh;
     transition: all 0.3s ease;
 }
 #icons img:hover {
@@ -60,6 +129,7 @@ nav a.active {
 
 main {
     width: 80%;
+    max-width: 1200px;
     margin: auto;
     background-color: black;
     padding-top: 10vh;
@@ -70,20 +140,24 @@ main hr {
 }
 .information-block {
     margin-bottom: 6vh;
+    padding: 0 2vh;
 }
 
 /* Hero Section */
 #home {
     width: 100%;
     height: 100vh;
+    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: -10vh;
+    padding: 0 2vh;
 }
 
 .hero-content {
     text-align: center;
+    max-width: 800px;
 }
 
 .hero-content h1 {
@@ -149,32 +223,34 @@ main hr {
 }
 
 h1 {
-    font-size: 5vh;
+    font-size: clamp(2rem, 5vh, 5vh);
 }
 
 h2 {
-    font-size: 4vh;
+    font-size: clamp(1.8rem, 4vh, 4vh);
 }
 
 h3 {
-    font-size: 3vh;
+    font-size: clamp(1.5rem, 3vh, 3vh);
     margin-top: 2vh;
 }
 
 h4 {
-    font-size: 2.5vh;
+    font-size: clamp(1.3rem, 2.5vh, 2.5vh);
     margin-top: 1.5vh;
     color: #FFD700;
 }
 
 #about-me {
     text-align: center;
-    font-size: 2.5vh;
+    font-size: clamp(1.2rem, 2.5vh, 2.5vh);
 }
 
 #about-me p {
     text-align: left;
     text-indent: 25px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 #about-me ul {
@@ -183,6 +259,13 @@ h4 {
     list-style-position: inside;
     margin-top: 2vh;
     margin-bottom: 2vh;
+    word-wrap: break-word;
+}
+
+.ul-closed {
+    padding-left: 40px;
+    margin-bottom: 2vh;
+    word-wrap: break-word;
 }
 
 /* Skills Section */
@@ -316,6 +399,8 @@ h4 {
     font-size: 2vh;
     text-align: justify;
     margin-top: 1vh;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Achievements */
@@ -360,6 +445,8 @@ h4 {
     font-size: 2vh;
     text-align: left;
     line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Projects */
@@ -369,19 +456,35 @@ h4 {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     position: relative;
     margin-bottom: 4vh;
+    width: 100%;
 }
 
 .scroller {
     overflow-x: scroll;
     display: flex;
     scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: #FFD700 #1a1a1a;
+}
+
+.scroller::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scroller::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 4px;
 }
 
 .item {
     padding: 1vh;
     margin: 1vh;
     margin-bottom: 0;
-    min-width: 85vh;
+    min-width: min(85vh, 90vw);
     max-width: 100%;
     flex-shrink: 0;
     min-height: 65vh;
@@ -393,13 +496,16 @@ h4 {
 
 .item img {
     width: 100%;
-    height: 50vh;
+    height: auto;
+    max-height: 50vh;
     border: none;
     object-fit: cover;
 }
 
 .project-details {
     padding: 2vh;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .project-details h3 {
@@ -601,18 +707,36 @@ footer {
     justify-content: center;
     margin: auto;
     padding: 2vh;
+    flex-wrap: wrap;
 }
 
 .footer-column {
     margin: 1vh;
     text-align: center;
-    font-size: 1.8vh;
+    font-size: clamp(0.85rem, 1.8vh, 1.8vh);
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 /* Media Queries */
+@media (max-width: 1200px) {
+    nav .main-nav-ul {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: clamp(1.2rem, 3vh, 3.5vh);
+        padding: 0.4vh 0.8vh;
+    }
+}
+
 @media (max-width: 1024px) {
     main {
         width: 90%;
+    }
+
+    #minigames {
+        margin-top: 14vh;
     }
 
     .contact-content {
@@ -638,23 +762,73 @@ footer {
         padding-left: 3vh;
         border-left: 3px solid #FFD700;
     }
+
+    #icons img {
+        width: 5vh;
+        height: 5vh;
+    }
+}
+
+@media (max-width: 900px) {
+    nav .main-nav-ul {
+        gap: 8px;
+    }
+
+    nav a {
+        font-size: clamp(1rem, 2.8vh, 2.8vh);
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
-    nav a {
-        font-size: 2.5vh;
+    main {
+        width: 95%;
+        padding-top: 15vh;
     }
 
-    nav ul {
+    header {
+        padding: 1vh 0.5vh;
+    }
+
+    nav .main-nav-ul {
         gap: 10px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: clamp(1rem, 2.5vh, 2.5vh);
+        padding: 0.3vh 0.5vh;
+    }
+
+    #icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #icons img {
+        width: 4vh;
+        height: 4vh;
+        margin: 0.3vh;
     }
 
     .hero-content h1 {
-        font-size: 4vh;
+        font-size: clamp(2rem, 4vh, 4vh);
+    }
+
+    .animated-roles {
+        gap: 1vh;
     }
 
     .animated-roles .role {
-        font-size: 2vh;
+        font-size: clamp(1rem, 2vh, 2vh);
+    }
+
+    .hero-content p {
+        font-size: clamp(1rem, 2vh, 2vh);
     }
 
     .achievements-grid {
@@ -664,15 +838,419 @@ footer {
     .tools-grid {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     }
+
+    .item {
+        min-width: 90vw;
+        min-height: auto;
+    }
+
+    .item img {
+        max-height: 40vh;
+    }
+
+    .project-details h3 {
+        font-size: 2.2vh;
+    }
+
+    .project-details p {
+        font-size: 1.8vh;
+    }
+
+    #minigames {
+        margin-top: 16vh;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        width: 98%;
+        padding-top: 20vh;
+    }
+
+    header {
+        flex-direction: column;
+        padding: 1vh;
+        gap: 1vh;
+        position: fixed;
+    }
+
+    header img {
+        max-width: 50px;
+    }
+
+    nav .main-nav-ul {
+        flex-wrap: wrap;
+        gap: 5px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.5vh 0.8vh;
+    }
+
+    #icons {
+        order: -1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.5vh;
+    }
+
+    #icons img {
+        width: 3.5vh;
+        height: 3.5vh;
+        margin: 0.2vh;
+    }
+
+    #home {
+        padding: 2vh;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .animated-roles {
+        flex-direction: column;
+        gap: 0.5vh;
+    }
+
+    .animated-roles .role {
+        font-size: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .contact-btn-hero {
+        padding: 1vh 2vh;
+        font-size: 1rem;
+    }
+
+    .information-block {
+        padding: 0 1vh;
+    }
+
+    #about-me ul {
+        padding-left: 20px;
+    }
+
+    .skill-header {
+        font-size: 1rem;
+    }
+
+    .progress-bar {
+        height: 1.5vh;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-tag {
+        font-size: 0.9rem;
+    }
+
+    .skills-list {
+        font-size: 0.95rem;
+        padding-left: 20px;
+    }
+
+    .timeline-content {
+        padding: 1.5vh;
+        padding-left: 2vh;
+    }
+
+    .edu-period,
+    .edu-degree,
+    .edu-description {
+        font-size: 0.9rem;
+    }
+
+    .achievements-grid {
+        gap: 1.5vh;
+    }
+
+    .achievement-card {
+        padding: 1.5vh;
+    }
+
+    .achievement-icon {
+        font-size: 3vh;
+    }
+
+    .achievement-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .achievement-date,
+    .achievement-description {
+        font-size: 0.9rem;
+    }
+
+    .item {
+        min-width: 95vw;
+        margin: 0.5vh;
+        padding: 0.5vh;
+    }
+
+    .item img {
+        max-height: 30vh;
+    }
+
+    .project-details {
+        padding: 1vh;
+    }
+
+    .project-details h3 {
+        font-size: 1.2rem;
+    }
+
+    .project-details p {
+        font-size: 0.9rem;
+    }
+
+    .project-links a {
+        font-size: 0.85rem;
+        padding: 0.8vh 1.2vh;
+    }
+
+    .scroller-container .btn {
+        height: 25px;
+        width: 25px;
+        font-size: 0.9rem;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 1vh;
+    }
+
+    .contact-info p {
+        font-size: 1rem;
+    }
+
+    .social-links img {
+        width: 4vh;
+        height: 4vh;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.8vh;
+    }
+
+    .contact-btn {
+        font-size: 1rem;
+        padding: 1vh 2vh;
+    }
+
+    .footer-column {
+        font-size: 0.85rem;
+    }
+
+    .minigame h2 {
+        margin: auto 2vh;
+        font-size: 1.2rem;
+    }
+
+    #minigames {
+        margin-top: 18vh;
+    }
+}
+
+/* Улучшение сенсорного опыта */
+@media (hover: none) and (pointer: coarse) {
+    nav a {
+        padding: 1vh 1.5vh;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contact-btn,
+    .contact-btn-hero,
+    .project-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #icons img {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .social-links img {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Landscape mode для мобильных */
+@media (max-height: 500px) and (orientation: landscape) {
+    #home {
+        min-height: 100vh;
+        padding: 5vh 2vh;
+    }
+
+    #minigames {
+        margin-top: 12vh;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .animated-roles .role {
+        font-size: 0.9rem;
+    }
+
+    .hero-content p {
+        font-size: 0.85rem;
+    }
+
+    header {
+        padding: 0.5vh;
+    }
+
+    nav a {
+        padding: 0.5vh 1vh;
+        font-size: 0.85rem;
+    }
+
+    #icons img {
+        width: 3vh;
+        height: 3vh;
+    }
+
+    main {
+        padding-top: 10vh;
+    }
 }
 
 #minigames {
-    margin-top: 5vh;
+    margin-top: 12vh;
     background-color: black;
     border-radius: 8px;
-    font-size: 3vh;
+    font-size: clamp(1.5rem, 3vh, 3vh);
     text-align: center;
+    padding: 2vh;
+}
+#minigames p {
+    font-size: 2.5vh;
 }
 .minigame {
-    margin-top: 2vh;
+    margin-top: 4vh;
+    background-color: #1a1a1a;
+    padding: 2vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.minigame h2 {
+    margin: auto 4vh;
+    word-wrap: break-word;
+}
+
+.minigame p {
+    margin: 2vh 0;
+    font-size: clamp(1rem, 2vh, 2vh);
+}
+
+.minigame button {
+    padding: 1.5vh 3vh;
+    background-color: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: clamp(1rem, 2.2vh, 2.2vh);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 2vh 0;
+}
+
+.minigame button:hover {
+    background-color: rgb(255, 199, 0);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+}
+
+#adventure-generator {
+    margin-top: 4vh;
+    background-color: #1a1a1a;
+    padding: 2vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#adventure-generator li {
+    background-color: rgb(255, 250, 235);
+    color: #000;
+    padding: 2vh;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 1vh;
+}
+
+#adventure-generator li .adventure-timestamp {
+    font-size: 0.85em;
+    color: #cc9900;
+    font-weight: bold;
+    margin-bottom: 0.5vh;
+}
+
+#adventure-generator li .adventure-text {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #000;
+}
+
+#adventure-history h3 {
+    margin-bottom: 2vh;
+    width: 100%;
+}
+#adventure-history {
+    width: 100%;
+}
+
+#adventure-history ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    padding-left: 0;
+    gap: 1vh;
+}
+#guessNumber {
+    margin-top: 4vh;
+    background-color: #1a1a1a;
+    padding: 2vh;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#guestNumberInput {
+    height: 6vh;
+    width: 12rem;
+    padding: 0.5vh;
+    font-size: 2vh;
+    color: black;
 }
