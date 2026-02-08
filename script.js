@@ -386,6 +386,9 @@ function validateGuestNumberInput() {
     if (value === '') {
         resultGuestNumber.textContent = 'Пожалуйста, введите число от 0 до 100.';
         inputIsValid = false;
+    } else if (isNaN(value)) {
+        resultGuestNumber.textContent = 'Пожалуйста, введите число от 0 до 100.';
+        inputIsValid = false;
     } else if (value < 0){
         inputGuestNumber.value = 0;
         resultGuestNumber.textContent = 'Число не может быть меньше 0. Установлено значение 0.';
@@ -394,9 +397,9 @@ function validateGuestNumberInput() {
         inputGuestNumber.value = 100;
         resultGuestNumber.textContent = 'Число не может быть больше 100. Установлено значение 100.';
         inputIsValid = true;
-    } else if (isNaN(value)) {
-        resultGuestNumber.textContent = 'Пожалуйста, введите число от 0 до 100.';
-        inputIsValid = false;
+    } else {
+        resultGuestNumber.textContent = '';
+        inputIsValid = true;
     }
 }
 
