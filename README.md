@@ -4,7 +4,7 @@
 
 ## 🌐 Демо
 
-[Портфолио на GitHub Pages](https://yourusername.github.io/portfolio)
+[Портфолио на GitHub Pages](https://left2bad.github.io/left2bed_portflio/)
 
 ## 📋 Описание
 
